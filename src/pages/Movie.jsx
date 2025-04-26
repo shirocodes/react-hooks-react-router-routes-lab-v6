@@ -18,6 +18,7 @@ function Movie() {
         return response.json();
       })
       .then((data) => {
+        console.log("Fetched movie:", data);
         setMovie(data);
         setIsLoading(false);
       })
@@ -42,8 +43,8 @@ function Movie() {
       </header>
       <main>
         {error ? (
-          <p>{error}</p> // Show error if there's any
-        ) : (
+          <p>{error}</p>
+        ) : movie ? (
           <article>
             <h1>{movie.title}</h1>
             <p>Duration: {movie.time} mins</p>
@@ -55,6 +56,8 @@ function Movie() {
               ))}
             </div>
           </article>
+        ) : (
+          <p>Movie data not available</p>
         )}
       </main>
     </>
